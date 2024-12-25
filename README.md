@@ -11,7 +11,7 @@ This project is built as a **Turborepo**, a monorepo architecture that manages m
 
 ## High-Level Design
 
-    ![System Design](assets/system-design.png)
+![System Design](assets/system-design.png)
 
 ### **Auth Provider**
 - Implements secure user authentication via email or phone number.
