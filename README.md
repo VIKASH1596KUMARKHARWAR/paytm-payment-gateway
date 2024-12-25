@@ -1,73 +1,76 @@
-# PAYTM
+# PAYTM - Digital Payment Platform
 
-## Overview
-Paytm is a comprehensive platform designed to facilitate secure and seamless digital payments for users and merchants. The application supports features like user authentication, bank transactions, QR code payments, and merchant-specific operations, making it a versatile tool for financial transactions.
+## 🚀 Overview
+**Paytm** is a comprehensive digital payment platform designed to provide secure and seamless financial transactions for both users and merchants. The application supports features like user authentication, bank transactions, QR code payments, and merchant-specific operations, making it a versatile tool for financial management.
 
-This is not the perfect implementation as it lacks a robust QR code system and advanced authentication mechanisms, but it serves as a great project to learn on-ramping, webhooks, and related concepts. In the future, enhancements will include improved authentication, a better UI, and additional features.
+Although this project lacks advanced features like a robust QR code system and cutting-edge authentication mechanisms, it serves as an excellent starting point for learning on-ramping, webhooks, and various other concepts. Future updates will focus on enhancing authentication methods, improving the UI/UX, and adding more functionality.
 
-This project is built as a **Turborepo**, a monorepo architecture that manages multiple interconnected packages efficiently.
+This project is structured as a **Turborepo**, leveraging a monorepo architecture to manage multiple interconnected packages efficiently.
 
 ---
 
-## High-Level Design
+## 🏗️ High-Level Design
 
 ![System Design](assets/system-design.png)
 
-### **Auth Provider**
-- Implements secure user authentication via email or phone number.
-- Supports Google Login for merchants.
+### 🔑 **Auth Provider**
+- **Secure Authentication**: Users can sign in via email or phone number.
+- **Google Login for Merchants**: Facilitates easy access for merchants.
 
-### **Database**
-- **Postgres**: Used for structured data storage.
-- **Prisma ORM**: Simplifies database interactions.
+### 🗄️ **Database**
+- **Postgres**: Relational database to store structured data.
+- **Prisma ORM**: Simplifies interactions with the database.
 
-### **Backend Stack**
-- **Next.js**: Handles server-side rendering and backend logic.
-- **Express.js**: Auxiliary backend for handling specific tasks.
+### 🖥️ **Backend Stack**
+- **Next.js**: Full-stack framework handling server-side rendering and backend logic.
+- **Express.js**: Auxiliary backend used for specific tasks and additional APIs.
 
-### **Frontend Stack**
-- **Next.js**: Manages frontend and backend seamlessly.
-- **Tailwind CSS**: Provides a responsive and customizable UI.
+### 🌐 **Frontend Stack**
+- **Next.js**: Seamlessly integrates frontend and backend for better performance.
+- **Tailwind CSS**: A utility-first CSS framework used for building responsive and customizable UIs.
 
-### **Modules**
-- **Common**: Shared utilities and services.
-- **UI**: Frontend components and design systems.
-- **Backend**: Core server logic and APIs.
+### 🧩 **Modules**
+- **Common**: Shared utilities and services across the app.
+- **UI**: Frontend components and design system elements.
+- **Backend**: Core server logic and API functionalities.
 
-### **Cloud Deployment**
-- Deployed to a scalable cloud provider for high availability.
+### ☁️ **Cloud Deployment**
+- Hosted on a scalable cloud provider for optimal performance and availability.
 
 ---
 
-## Low-Level Design (LLD)
-### **Schema**
-- Comprehensive database schema designed to handle transactions, user accounts, and merchant operations.
+## 🛠️ Low-Level Design (LLD)
+
+### **Database Schema**
+A comprehensive schema designed to handle user accounts, merchant transactions, and financial data flow.
 
 ### **Route Signatures**
-- RESTful APIs with structured route signatures for seamless communication.
+RESTful APIs with structured routes ensure smooth communication between frontend and backend.
 
 ### **Frontend Components**
-- Intuitive and interactive components to enhance user experience.
+A well-organized set of components providing an intuitive and interactive user experience.
 
 ---
 
-## Features
+## ✨ Features
+
 ### **User Features**
-- Login via email/phone.
-- On-ramp and off-ramp transactions to/from bank accounts.
-- Peer-to-peer (P2P) transfers using phone number or name.
-- QR code scanning for merchant payments.
+- **Login**: Supports sign-in via email/phone.
+- **On-Ramp and Off-Ramp**: Bank transfers to/from user accounts.
+- **P2P Transfers**: Peer-to-peer transfers via phone number or name.
+- **QR Code Payments**: Users can make payments by scanning merchant-generated QR codes.
 
 ### **Merchant Features**
-- Google-based login.
-- QR code generation for payment acceptance.
-- Payment notifications and alerts.
-- Automatic bank transfer of balances every 2 days.
+- **Google Login**: Enables quick merchant authentication.
+- **QR Code Generation**: Merchants can generate their own QR codes for receiving payments.
+- **Notifications & Alerts**: Merchants receive alerts for new payments and transaction updates.
+- **Automated Bank Transfers**: Every 2 days, merchant balances are transferred to their bank accounts.
 
 ---
 
-## Stack
-- **Frontend and Backend**: Next.js
+## ⚙️ Stack
+
+- **Frontend & Backend**: Next.js
 - **Auxiliary Backend**: Express.js
 - **Monorepo Management**: Turborepo
 - **Database**: Postgres
@@ -76,31 +79,28 @@ This project is built as a **Turborepo**, a monorepo architecture that manages m
 
 ---
 
-## Critical Paths
-1. **Sending Money**: Ensures smooth peer-to-peer transactions.
-2. **Merchant Withdrawals**: Transfers merchant balances to their bank accounts.
-3. **User Withdrawals**: Allows users to transfer balances back to their bank accounts.
-4. **Bank Webhooks**: Handles incoming money transfers via bank integrations.
+## 🛤️ Critical Paths
+
+1. **Sending Money**: Streamlined peer-to-peer (P2P) transaction flow.
+2. **Merchant Withdrawals**: Ensures timely transfer of merchant funds to their bank accounts.
+3. **User Withdrawals**: Facilitates user withdrawals back to their bank accounts.
+4. **Bank Webhooks**: Handles money transfers from banks via webhooks for real-time updates.
 
 ---
 
-## Hot Path Workflow
-### Webhooks
-- **Definition**: Webhooks are HTTP callbacks that are triggered by specific events in the application. In Paytm, webhooks are used to handle real-time notifications and events from the bank for money transfer activities.
-- **Usage in Paytm**:
-  - Initiate a new entry in the `onRampTransactions` table when the "Send Money" button is clicked.
-  - Process bank webhook events to fulfill transactions and update the database.
-  - Ensure seamless integration between user actions and backend processing.
+## 🔄 Hot Path Workflow
 
-### Workflow
-1. Clicking a "Send Money" button initiates an entry in the `onRampTransactions` table.
-2. The transaction is fulfilled via the bank-webhook module.
-3. Users can transfer money to various wallets after successful on-ramping.
-4. Maintains a `P2PTransactions` table to track peer-to-peer activities.
+### **Webhooks**
+- **Definition**: Webhooks are HTTP callbacks triggered by specific events (like bank transfers). They allow for real-time updates within the application, ensuring smooth data synchronization.
+  
+### **Workflow in Paytm**:
+1. When a user clicks the "Send Money" button, a new entry is created in the `onRampTransactions` table.
+2. Bank webhook events process and update the transaction status accordingly.
+3. Once the transaction is complete, users can transfer money to other wallets or bank accounts.
 
 ---
 
-## Sample Webhook Code
+## 💻 Sample Code
 ```javascript
 import express from "express";
 import db from "@repo/db/client";
