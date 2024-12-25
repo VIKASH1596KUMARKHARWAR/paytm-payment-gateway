@@ -235,7 +235,7 @@ npm run dev
 
 ---
 
-## Additional Notes
+## 📈 Additional Notes
 ### ER Diagrams
 - **Optional**: Useful for visualizing database relationships.
 
@@ -248,7 +248,7 @@ npm run dev
 
 ---
 
-## Future Enhancements
+## 🚀 Future Enhancements
 - Improve authentication mechanisms.
 - Enhance UI/UX for better usability.
 - Add advanced features to streamline operations further.
