@@ -190,7 +190,7 @@ module.exports = { initiateTransaction };
 
 ---
 
-## Installation and Setup
+## 🛠️ Installation and Setup
 
 ### Step 1: Clone the Repository
 ```bash
