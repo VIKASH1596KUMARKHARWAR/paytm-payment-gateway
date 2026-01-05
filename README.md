@@ -1,4 +1,5 @@
 # PAYTM - Digital Payment Platform
+   Note: This project is an educational Paytm-like system built to demonstrate payment flows, webhooks, wallet balances, and backend system design.
 
 ## 🚀 Overview
 **Paytm** is a comprehensive digital payment platform designed to provide secure and seamless financial transactions for both users and merchants. The application supports features like user authentication, bank transactions, QR code payments, and merchant-specific operations, making it a versatile tool for financial management.
